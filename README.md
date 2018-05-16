@@ -1,10 +1,15 @@
-# market-vue
+# market-vue 项目描述
 
-> A Vue.js project
+> 用于解决web单页面应用，用到的技术：
+     脚手架：            vue-cli
+     数据驱动框架：      Vue
+     状态管理：          Vuex
+     路由  ：            vue-router
+     页面UI：            ElementUI
+     http库：            Axios
 
 ## Build Setup
 
-``` bash
 # install dependencies
 npm install
 
