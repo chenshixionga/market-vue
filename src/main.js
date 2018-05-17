@@ -6,11 +6,11 @@ import router from './router'
 import axios from 'axios'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
+import store from '@/vuex/store'
 
 Vue.use(ElementUI)
+
+axios.defaults.baseURL = "http://market-uic.djws.com.cn/api"
 
 Vue.prototype.$axios = axios
 
@@ -20,6 +20,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
