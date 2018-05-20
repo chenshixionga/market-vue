@@ -10,7 +10,12 @@ import store from '@/vuex/store'
 
 Vue.use(ElementUI)
 
-axios.defaults.baseURL = "http://market-uic.djws.com.cn/api"
+// axios.defaults.baseURL = "http://market-uic.djws.com.cn/api"
+
+//为了配置跨域
+Vue.prototype.$api  = "/api"
+
+Vue.prototype.$apiBeen = "http://api.douban.com"
 
 Vue.prototype.$axios = axios
 
