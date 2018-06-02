@@ -34,7 +34,7 @@ export default {
             { min: 3, max: 9, message: '长度在 3 到 9 个字符', trigger: 'blur' }
           ],
           password: [
-            { required: true, message: '请选择活动区域', trigger: 'change' }
+            { required: true, message: '请输入密码', trigger: 'change' }
           ],
        }
     }
@@ -43,15 +43,20 @@ export default {
     submitForm(formName){
        this.$refs[formName].validate((valid) => {
           if (valid) {
-            this.$axios.post( this.$api+'/login',{
-              loginName: this.login.user,
-              password: this.login.password
-            }).then((response)=> {
-              console.log(response)
+            // this.$axios.post( this.$api+'/login',{
+            //   loginName: this.login.user,
+            //   password: this.login.password
+            // }).then((response)=> {
+            //   console.log(response)
+            // })
+            // .catch((error)=> {
+            //   console.log(error);
+            // });
+            this.$store.dispatch('Login', this.login).then(() => {
+              this.$router.push({ path: '/' })
+            }).catch(() => {
+              console.log('login error')
             })
-            .catch((error)=> {
-              console.log(error);
-            });
           } else {
             console.log('error submit!!');
             return false;
