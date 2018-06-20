@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import { login } from './loginService.js'
 import qs from 'qs'
+import { getToken } from '@/utils/auth' // 验权
 export default {
   name: 'HelloWorld',
   data () {
@@ -53,6 +53,8 @@ export default {
             //   console.log(error);
             // });
             this.$store.dispatch('Login', this.login).then(() => {
+              console.log(getToken())
+              console.log(this.$store.getters.token) 
               this.$router.push({ path: '/' })
             }).catch(() => {
               console.log('login error')

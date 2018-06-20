@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <el-button @click="removeToken">removeToken</el-button>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -84,12 +85,29 @@
 </template>
 
 <script>
+import { marketList } from '@/api/login'
+import { removeToken } from '@/utils/auth'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  created() {
+    this.getMarkets()
+  },
+  methods: {
+    getMarkets() {
+       marketList().then(res => {
+         console.log(res)
+       }).catch(err => {
+         console.log(err)
+       })
+    },
+    removeToken() {
+       removeToken()
+    }   
   }
 }
 </script>
