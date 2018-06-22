@@ -17,6 +17,13 @@ module.exports = {
         pathRewrite:{
           "^/api":""
         }
+      },
+      '/erpApi': {
+        target: 'http://erp.ijiaol.com:18010',
+        changeOrigin:true,
+        pathRewrite: {
+          '^/erpApi': '/'
+        }
       }
     },
 
@@ -28,7 +35,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
