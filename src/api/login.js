@@ -14,13 +14,10 @@ export function login(userInfo) {
             }
         })        
 }
-export function marketList() {
+export function marketList(data) {
     return request({
         url: '/markets',
         method: 'get',
-        data: {
-                pageSize:10,
-                pageNo:1
-            }
+        params: data
         })        
 }

@@ -16,8 +16,6 @@ Vue.use(ElementUI)
 //为了配置跨域
 Vue.prototype.$api  = "/api"
 
-Vue.prototype.$apiBeen = "http://api.douban.com"
-
 Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false

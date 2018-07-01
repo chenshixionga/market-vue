@@ -1,8 +1,9 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <el-button @click="removeToken">removeToken</el-button>
+    <el-button @click="removeToken">退出</el-button>
     <el-button type="primary" @click="getOrders">订单列表</el-button>
+    <el-button type="primary" @click="getMarkets">市场列表</el-button>
   </div>
 </template>
 
@@ -14,15 +15,16 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      querySearch: { pageNo: 1, pageSize: 10, _filter_like_cityCode:'',
+                  _filter_like_provinceCode:'',
+                  _filter_like_addr: '',
+                  _filter_like_name: ''}
     }
-  },
-  created() {
-    this.getMarkets()
   },
   methods: {
     getMarkets() {
-       marketList().then(res => {
+       marketList(this.querySearch).then(res => {
          console.log(res)
        }).catch(err => {
          console.log(err)
@@ -30,6 +32,7 @@ export default {
     },
     removeToken() {
        removeToken()
+       this.$router.push('/login')
     },
     getOrders(){
       orderList({ page_no: 1, page_size: 10 }).then(response => {
