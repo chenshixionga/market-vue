@@ -7,7 +7,7 @@
       <el-form-item label="密码" prop="password">
         <el-input type="password" v-model="login.password" auto-complete="off"></el-input>
       </el-form-item>
-  
+
       <el-form-item>
         <el-button type="primary" @click="submitForm('loginRef')">登录</el-button>
         <el-button @click="resetForm('loginRef')">重置</el-button>
@@ -53,8 +53,8 @@ export default {
             // });
             this.$store.dispatch('Login', this.login).then(() => {
               console.log(getToken())
-              console.log(this.$store.getters.token) 
-              this.$router.push({ path: '/' })
+              console.log(this.$store.getters.token)
+              this.$router.push({ path: '/home' })
             }).catch(() => {
               console.log('login error')
             })
@@ -62,7 +62,7 @@ export default {
             console.log('error submit!!');
             return false;
           }
-        }); 
+        });
     },
     resetForm(formName) {
         this.$refs[formName].resetFields();

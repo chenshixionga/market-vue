@@ -4,8 +4,8 @@
     <el-button @click="removeToken">退出</el-button>
     <el-button type="primary" @click="getOrders">订单列表</el-button>
     <el-button type="primary" @click="getMarkets">市场列表</el-button>
-    <div><span>{{date1}}</span></div>
-    <div><span>{{dateFormate}}</span></div>
+    <!--<div><span>{{date1}}</span></div>-->
+    <!--<div><span>{{dateFormate}}</span></div>-->
   </div>
 </template>
 
@@ -34,7 +34,7 @@ export default {
   methods: {
     initMethod() {
       this.date = new Date()
-      
+
       this.date1 = formatDate(this.date, 'yyyy-MM-dd')
 
       this.dateFormate = formatDate(this.date, 'yyyy年MM月dd日 hh:mm:ss')

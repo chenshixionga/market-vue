@@ -5,8 +5,9 @@ const whiteList = ['/login'] // 不重定向白名单
 router.beforeEach((to, from, next) => {
   if (getToken()) {
     console.log(getToken())
-    if (to.path === '/login') { 
-      next({ path: '/' })
+    console.log(to.path === '/')
+    if(to.path === '/' || to.path === '/login') {
+      next({ path: '/home'})
     } else {
       next()
     }
@@ -20,5 +21,5 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(() => {
- 
+
 })
