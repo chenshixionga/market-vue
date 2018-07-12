@@ -8,23 +8,6 @@ Vue.use(Router)
 
 export default new Router({
  // mode:'history',
- /* routes: [
-    {
-      path: '',
-      name: 'layout',
-      component: Layout,
-      children:[{
-        path: 'home',
-        name: 'home',
-        component: HelloWorld
-      }]
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    }
-  ]*/
   routes: [
     {
       path: '',

@@ -9,6 +9,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 import store from '@/vuex/store'
 import './permission' // 全局路由配置
 
+
+import 'normalize.css/normalize.css' // 重置初始样式
+import '@/styles/index.css' // 全局样式
+
 Vue.use(ElementUI)
 
 // axios.defaults.baseURL = "http://market-uic.djws.com.cn/api"
