@@ -4,8 +4,14 @@
     <el-button @click="removeToken">退出</el-button>
     <el-button type="primary" @click="getOrders">订单列表</el-button>
     <el-button type="primary" @click="getMarkets">市场列表</el-button>
+    <el-button type="primary" @click="handleDownload">导出Excel</el-button>
     <!--<div><span>{{date1}}</span></div>-->
     <!--<div><span>{{dateFormate}}</span></div>-->
+    <upload-excel :on-success='handleSuccess' :before-upload="beforeUpload"></upload-excel>
+    <el-table :data="tableData" border highlight-current-row style="width: 100%;margin-top:20px;">
+      <el-table-column v-for='item of tableHeader' :prop="item" :label="item" :key='item'>
+      </el-table-column>
+    </el-table>
   </div>
 </template>
 
@@ -13,15 +19,24 @@
 import { marketList } from '@/api/login'
 import { orderList } from '@/api/erpApi'
 import { removeToken } from '@/utils/auth'
-import { formatDate } from '@/utils/index'
+import { formatDate, parseTime } from '@/utils'
+import UploadExcel from '@/components/UploadExcel/index.vue'
 export default {
   name: 'HelloWorld',
+  components: {
+    UploadExcel
+  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
       date: '',
       date1: '',
       dateFormate: '',
+      list: [],
+      filename: 'test',
+      autoWidth: true,
+      tableData: [],
+      tableHeader: [],
       querySearch: { pageNo: 1, pageSize: 10, _filter_like_cityCode:'',
                   _filter_like_provinceCode:'',
                   _filter_like_addr: '',
@@ -52,8 +67,49 @@ export default {
     },
     getOrders(){
       orderList({ page_no: 1, page_size: 10 }).then(response => {
-        console.log(response.data.list)
+        console.log(response.data.data.list)
+        this.list = response.data.data.list
       })
+    },
+    handleDownload() {
+      import('@/vendor/Export2Excel').then(excel => {
+        const tHeader = ['订单号', '总价格', '供应商', '地址', '状态']
+        const filterVal = ['order_name', 'amount_total', 'partner_name', 'receiving_street', 'state']
+        const list = this.list
+        const data = this.formatJson(filterVal, list)
+        excel.export_json_to_excel({
+          header: tHeader,
+          data,
+          filename: this.filename,
+          autoWidth: this.autoWidth
+        })
+      })
+    },
+    formatJson(filterVal, jsonData) {
+      return jsonData.map(v => filterVal.map(j => {
+        if (j === 'timestamp') {
+          return parseTime(v[j])
+        } else {
+          return v[j]
+        }
+      }))
+    },
+    beforeUpload(file) {
+      const isLt1M = file.size / 1024 / 1024 < 1
+
+      if (isLt1M) {
+        return true
+      }
+
+      this.$message({
+        message: 'Please do not upload files larger than 1m in size.',
+        type: 'warning'
+      })
+      return false
+    },
+    handleSuccess({ results, header }) {
+      this.tableData = results
+      this.tableHeader = header
     }
   }
 }
