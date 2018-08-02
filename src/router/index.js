@@ -4,7 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/pages/login'
 import Home from '@/pages/home'
 import Layout from '@/pages/layout/layout'
-import TinymceDemo from '@/pages/tinymce'
+// import TinymceDemo from '@/pages/tinymce'
 
 Vue.use(Router)
 
@@ -26,12 +26,12 @@ export default new Router({
           name: 'home',
           component: Home,
           meta: { title: '主页'}
-        },  {
+        }/*,  {
           path: 'tinymce',
           name: 'tinymce-demo',
           component: TinymceDemo,
           meta: { title: '富文本'}
-        }
+        }*/
       ]
     },
     {
