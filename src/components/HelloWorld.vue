@@ -4,7 +4,7 @@
     <el-button @click="removeToken">退出</el-button>
     <el-button type="primary" @click="getOrders">订单列表</el-button>
     <el-button type="primary" @click="handleDownload">导出Excel</el-button>
-    <!--<el-button type="primary" @click="tinymceDemo">富文本</el-button>-->
+    <el-button type="primary" @click="splitpaneDemo">区域大小改变</el-button>
 
     <div>日期时间格式：<span>{{date1}}</span><span style="margin-left: 30px">{{dateFormate}}</span></div>
 
@@ -86,8 +86,8 @@ export default {
 
       this.dateFormate = formatDate(this.date, 'yyyy年MM月dd日 hh:mm:ss')
     },
-    tinymceDemo() {
-       this.$router.push({ name: 'tinymce'})
+    splitpaneDemo() {
+       this.$router.push({ name: 'splitpane'})
     },
     removeToken() {
        removeToken()
