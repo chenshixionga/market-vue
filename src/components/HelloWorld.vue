@@ -3,11 +3,13 @@
     <h1>{{ msg }}</h1>
     <el-button @click="removeToken">退出</el-button>
     <el-button type="primary" @click="getOrders">订单列表</el-button>
-    <el-button type="primary" @click="getMarkets">市场列表</el-button>
     <el-button type="primary" @click="handleDownload">导出Excel</el-button>
-    <!--<div><span>{{date1}}</span></div>-->
-    <!--<div><span>{{dateFormate}}</span></div>-->
+    <el-button type="primary" @click="tinymceDemo">富文本</el-button>
+
+    <div>日期时间格式：<span>{{date1}}</span><span style="margin-left: 30px">{{dateFormate}}</span></div>
+
     <upload-excel :on-success='handleSuccess' :before-upload="beforeUpload"></upload-excel>
+
     <el-table :data="tableData" border highlight-current-row style="width: 100%;margin-top:20px;">
       <el-table-column v-for='item
       of
@@ -84,12 +86,8 @@ export default {
 
       this.dateFormate = formatDate(this.date, 'yyyy年MM月dd日 hh:mm:ss')
     },
-    getMarkets() {
-       marketList(this.querySearch).then(res => {
-         console.log(res)
-       }).catch(err => {
-         console.log(err)
-       })
+    tinymceDemo() {
+       this.$router.push({ name: 'tinymce'})
     },
     removeToken() {
        removeToken()
@@ -143,6 +141,7 @@ export default {
       this.tableData = results
       this.tableHeader = header
     },
+
     // 图片上传
     beforeUploadImg(file) {
       const isJPG = file.type === 'image/jpeg' || file.type === 'image/png'

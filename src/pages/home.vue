@@ -1,14 +1,18 @@
 <template>
   <div>
     <gantt :tasks="tasks"></gantt>
+    <req-exp></req-exp>
   </div>
 </template>
 
 <script>
 import Gantt from '@/components/Gantt.vue'
+import ReqExp from './reqExp.vue'
 export default {
   name: 'home',
-  components: {Gantt},
+  components: {
+    ReqExp,
+    Gantt},
   data () {
     return {
       tasks: {
