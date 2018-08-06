@@ -5,6 +5,7 @@ import Login from '@/pages/login'
 import Home from '@/pages/home'
 import Layout from '@/pages/layout/layout'
 import SplitPane from '@/pages/splitpane'
+import Sticky from '@/pages/sticky'
 
 Vue.use(Router)
 
@@ -30,8 +31,13 @@ export default new Router({
           path: 'split',
           name: 'splitpane',
           component: SplitPane,
-          meta: { title: '改变模块大小'}
-        }
+          meta: { title: '空间分割'}
+        },  {
+        path: 'sticky',
+        name: 'sticky',
+        component: Sticky,
+        meta: { title: '吸附'}
+      }
       ]
     },
     {
