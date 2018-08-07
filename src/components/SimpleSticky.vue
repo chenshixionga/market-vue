@@ -1,9 +1,11 @@
 <template>
-    <div :style="{ position:position,top: stickyTop + 'px', width:width }">
+  <div>
+    <div :class="className" :style="{ position:position,top: stickyTop + 'px', width:width}">
       <slot>
         <div>SimpleSticky</div>
       </slot>
     </div>
+  </div>
 </template>
 
 <script>
@@ -14,18 +16,22 @@
         test: '',
         position: '',
         width: undefined,
-        height: undefined
+        height: undefined,
+        active: false
       }
     },
     props: {
       stickyTop: {
         type: Number,
-        default: 0
+        default: 1
       },
       zIndex: {
         type: Number,
         default: 1
-      }
+      },
+     className: {
+       type: String
+     }
     },
     mounted() {
       this.height = this.$el.getBoundingClientRect().height
@@ -38,15 +44,29 @@
       handleScroll() {
         this.width = this.$el.getBoundingClientRect().width
         let actualTop = this.$el.getBoundingClientRect().top
-        console.log(actualTop)
         if(actualTop < this.stickyTop) {
-          this.position = 'fixed'
-          this.width = this.width + 'px'
+          this.sticky()
+          console.log('sticky')
+          return
+        }
+        this.reset()
+        console.log('no-sticky')
+      },
+      sticky() {
+        if(this.active) {
+          return
+        }
+        this.position = 'fixed'
+        this.width = this.width + 'px'
+        this.active = true
+      },
+      reset() {
+        if(!this.active) {
           return
         }
         this.position = ''
-        this.width = ''
-        console.log('scroll')
+        this.width = 'auto'
+        this.active = false
       }
     }
   }
