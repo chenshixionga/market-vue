@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="sticky-container">
     <sticky className="sub-navbar">
       <el-dropdown trigger="click">
         <el-button plain>
@@ -128,7 +128,8 @@ export default {
 .time-container {
   display: inline-block;
 }
-.sub-navbar {
-  background-color: rgba(55, 104, 7, 0.62);
+.sticky-container >>> .sub-navbar {  /* 样式深入子组件*/
+  background-color: rgba(197, 250, 195, 0.62);
+  border-radius: 5px;
 }
 </style>

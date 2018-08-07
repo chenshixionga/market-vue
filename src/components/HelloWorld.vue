@@ -3,13 +3,18 @@
     <h1>{{ msg }}</h1>
     <el-button @click="removeToken">退出</el-button>
     <el-button type="primary" @click="getOrders">订单列表</el-button>
+    <el-button type="primary" @click="getMarkets">市场列表</el-button>
     <el-button type="primary" @click="handleDownload">导出Excel</el-button>
+<<<<<<< HEAD
     <el-button type="primary" @click="splitpaneDemo">区域大小改变</el-button>
 
     <div>日期时间格式：<span>{{date1}}</span><span style="margin-left: 30px">{{dateFormate}}</span></div>
 
+=======
+    <!--<div><span>{{date1}}</span></div>-->
+    <!--<div><span>{{dateFormate}}</span></div>-->
+>>>>>>> parent of b0375b9... 富文本 与sass 使用
     <upload-excel :on-success='handleSuccess' :before-upload="beforeUpload"></upload-excel>
-
     <el-table :data="tableData" border highlight-current-row style="width: 100%;margin-top:20px;">
       <el-table-column v-for='item
       of
@@ -86,8 +91,17 @@ export default {
 
       this.dateFormate = formatDate(this.date, 'yyyy年MM月dd日 hh:mm:ss')
     },
+<<<<<<< HEAD
     splitpaneDemo() {
        this.$router.push({ name: 'splitpane'})
+=======
+    getMarkets() {
+       marketList(this.querySearch).then(res => {
+         console.log(res)
+       }).catch(err => {
+         console.log(err)
+       })
+>>>>>>> parent of b0375b9... 富文本 与sass 使用
     },
     removeToken() {
        removeToken()
@@ -141,7 +155,6 @@ export default {
       this.tableData = results
       this.tableHeader = header
     },
-
     // 图片上传
     beforeUploadImg(file) {
       const isJPG = file.type === 'image/jpeg' || file.type === 'image/png'

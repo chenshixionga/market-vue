@@ -4,8 +4,11 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/pages/login'
 import Home from '@/pages/home'
 import Layout from '@/pages/layout/layout'
+<<<<<<< HEAD
 import SplitPane from '@/pages/splitpane'
 import Sticky from '@/pages/sticky'
+=======
+>>>>>>> parent of b0375b9... 富文本 与sass 使用
 
 Vue.use(Router)
 
@@ -27,6 +30,7 @@ export default new Router({
           name: 'home',
           component: Home,
           meta: { title: '主页'}
+<<<<<<< HEAD
         },  {
           path: 'split',
           name: 'splitpane',
@@ -38,6 +42,9 @@ export default new Router({
         component: Sticky,
         meta: { title: '吸附'}
       }
+=======
+        }
+>>>>>>> parent of b0375b9... 富文本 与sass 使用
       ]
     },
     {
