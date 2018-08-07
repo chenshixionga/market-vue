@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+import Sticky from '@/pages/sticky'
 import Login from '@/pages/login'
 import Home from '@/pages/home'
 import Layout from '@/pages/layout/layout'
+import SplitPane from '@/pages/splitpane'
 
 Vue.use(Router)
 
