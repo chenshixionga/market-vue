@@ -6,6 +6,7 @@ import Login from '@/pages/login'
 import Home from '@/pages/home'
 import Layout from '@/pages/layout/layout'
 import SplitPane from '@/pages/splitpane'
+import BackToTop from '@/pages/backToTop'
 
 Vue.use(Router)
 
@@ -37,7 +38,12 @@ export default new Router({
           name: 'sticky',
           component: Sticky,
           meta: { title: '吸附'}
-        }
+        },  {
+        path: 'backToTop',
+        name: 'backToTop',
+        component: BackToTop,
+        meta: { title: '返回顶部'}
+      }
       ]
     },
     {

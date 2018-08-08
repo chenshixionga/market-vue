@@ -36,9 +36,10 @@
     mounted() {
       this.height = this.$el.getBoundingClientRect().height
       window.addEventListener('scroll', this.handleScroll)
+      window.addEventListener('resize', this.handleScroll)
     },
     destroyed() {
-      window.removeEventListener('scroll',this.handleScroll)
+      window.removeEventListener('scroll',this.handleResize)
     },
     methods: {
       handleScroll() {
@@ -67,6 +68,11 @@
         this.position = ''
         this.width = 'auto'
         this.active = false
+      },
+      handleResize() {
+        if(this.active) {
+          this.width = this.$el.getBoundingClientRect().width + 'px'
+        }
       }
     }
   }
